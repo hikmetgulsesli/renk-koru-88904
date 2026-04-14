@@ -1,20 +1,18 @@
 import { TimeBar } from './TimeBar';
 
 interface GameHeaderProps {
-  score: number;
   current: number;
   total: number;
   timeRemaining: number;
+  timeTotal: number;
 }
 
-export function GameHeader({ score, current, total, timeRemaining }: GameHeaderProps): JSX.Element {
+export function GameHeader({ current, total, timeRemaining, timeTotal }: GameHeaderProps): JSX.Element {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
-
-  const totalTime = total > 0 ? (current <= total ? 30 : 0) : 0;
 
   return (
     <div className="w-full max-w-2xl mb-8 flex flex-col gap-6">
@@ -36,7 +34,7 @@ export function GameHeader({ score, current, total, timeRemaining }: GameHeaderP
           </div>
         </div>
       </div>
-      <TimeBar timeRemaining={timeRemaining} total={totalTime > 0 ? totalTime : 30} />
+      <TimeBar timeRemaining={timeRemaining} total={timeTotal} />
     </div>
   );
 }
