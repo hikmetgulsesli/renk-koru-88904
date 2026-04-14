@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Renk Koru - Game Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#ffffff",
+                    "on-tertiary-fixed": "#3a0003",
+                    "surface-container-low": "#131313",
+                    "tertiary-container": "#fd4e4d",
+                    "on-primary-fixed": "#004a1d",
+                    "surface-bright": "#2c2c2c",
+                    "error-container": "#b92902",
+                    "primary-fixed": "#6bff8f",
+                    "primary-container": "#0abc56",
+                    "on-primary": "#005f28",
+                    "outline-variant": "#484847",
+                    "on-primary-fixed-variant": "#006a2d",
+                    "tertiary-fixed": "#ff928b",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-on-surface": "#565555",
+                    "on-primary-container": "#002c0f",
+                    "outline": "#767575",
+                    "on-tertiary-container": "#1f0001",
+                    "primary": "#6bff8f",
+                    "tertiary-fixed-dim": "#ff7b74",
+                    "on-secondary": "#001e4a",
+                    "secondary-dim": "#699cff",
+                    "inverse-primary": "#006e2f",
+                    "on-secondary-container": "#f7f7ff",
+                    "primary-dim": "#5bf083",
+                    "tertiary-dim": "#ff716a",
+                    "secondary": "#699cff",
+                    "on-secondary-fixed": "#003271",
+                    "on-tertiary": "#490005",
+                    "surface": "#0e0e0e",
+                    "error": "#ff7351",
+                    "on-surface-variant": "#adaaaa",
+                    "background": "#0e0e0e",
+                    "on-error-container": "#ffd2c8",
+                    "surface-variant": "#262626",
+                    "surface-container": "#1a1a1a",
+                    "secondary-fixed": "#bfd1ff",
+                    "surface-container-high": "#20201f",
+                    "on-background": "#ffffff",
+                    "surface-tint": "#6bff8f",
+                    "surface-container-lowest": "#000000",
+                    "tertiary": "#ff716a",
+                    "primary-fixed-dim": "#5bf083",
+                    "secondary-container": "#005ac2",
+                    "error-dim": "#d53d18",
+                    "on-secondary-fixed-variant": "#004da8",
+                    "on-tertiary-fixed-variant": "#79000e",
+                    "surface-dim": "#0e0e0e",
+                    "on-error": "#450900",
+                    "secondary-fixed-dim": "#a9c4ff",
+                    "surface-container-highest": "#262626"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tonal-shift { background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%); }
+        .glass-panel { background: rgba(38, 38, 38, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(107, 255, 143, 0.1); }
+        .ishihara-shadow { box-shadow: 0 0 80px rgba(107, 255, 143, 0.08); }
+    </style>
+</head>
+<body class="overflow-hidden bg-background selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl transition-all">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#6bff8f] font-manrope">Luminous Precision</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="text-[#6bff8f] font-bold border-b-2 border-[#6bff8f] font-manrope tracking-tight py-1">Test</span>
+<span class="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">History</span>
+<span class="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">Insights</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="bg-[#6bff8f]/10 text-[#6bff8f] px-3 py-1 rounded-full text-xs font-bold font-manrope">Score: 2450</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-24 min-h-screen flex flex-col items-center justify-center px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Header Info & Timer Section -->
+<div class="w-full max-w-2xl mb-8 flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-xs uppercase tracking-[0.2em] font-bold mb-1">Mevcut İlerleme</span>
+<h1 class="text-4xl font-black font-headline tracking-tighter">Soru: 5/10</h1>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-primary text-xs uppercase tracking-[0.2em] font-bold mb-1">Kalan Süre</span>
+<div class="text-2xl font-mono font-bold text-on-surface">00:12</div>
+</div>
+</div>
+<!-- Custom Progress Bar (Timer) -->
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_15px_rgba(107,255,143,0.5)] w-[80%] rounded-full transition-all duration-1000 ease-linear"></div>
+</div>
+</div>
+<!-- Main Content Area: Bento-inspired Asymmetric Layout -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left: Skip and Context (Desktop only) -->
+<div class="hidden lg:flex lg:col-span-3 flex-col gap-4 order-2 lg:order-1">
+<div class="glass-panel p-6 rounded-[2rem] flex flex-col gap-4">
+<p class="text-on-surface-variant text-sm leading-relaxed font-medium">
+                        Bu plakadaki sayıyı göremiyorsanız 'Atla' düğmesine basın veya tahminde bulunun.
+                    </p>
+<button class="w-full py-4 px-6 rounded-xl bg-surface-container-highest text-on-surface font-bold hover:bg-surface-bright transition-all active:scale-95 flex items-center justify-center gap-2">
+<span>Atla</span>
+<span class="material-symbols-outlined text-sm" data-icon="fast_forward">fast_forward</span>
+</button>
+</div>
+</div>
+<!-- Center: Ishihara Plate -->
+<div class="lg:col-span-6 flex justify-center order-1 lg:order-2">
+<div class="relative group">
+<!-- Decorative backglow -->
+<div class="absolute inset-0 bg-primary/20 blur-[120px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-700"></div>
+<!-- The Plate -->
+<div class="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-surface-container overflow-hidden ishihara-shadow bg-surface-container-lowest">
+<img alt="Ishihara Test Plate" class="w-full h-full object-cover grayscale-[0.2] contrast-125" data-alt="Close-up of a circular Ishihara color blindness test plate featuring a mosaic of dense green and red dots forming a hidden number pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCu9mqR6QSN-1Ud-QFQcJMW2E-XQj9Yl3ao6WMvVAcxfyo_AuvDaEN1VDrl6WT57YkQhbdD2g9KQgQAcdt4IbScnjkI7gW4JX6rPsgqh0Bma-PDHjuV9IXmwdWfucQf85EVJxxtqLfPr94JQTYkAwT_T6YYInuN-98jWVEiCptq57Oolr7Q6zKpuep307XNSMv1q1SICPs-R5j8ZggI-gpxlDnsx0L8eEveGaK9b8x-PTpIIlkgRCjaPaw--Xiw65nfHy-LUJsE-hB"/>
+</div>
+<!-- Input Overlay for Focus -->
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-panel px-8 py-3 rounded-2xl flex flex-col items-center shadow-2xl">
+<span class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Giriş Yapın</span>
+<div class="text-3xl font-black font-headline tracking-widest text-on-surface">--</div>
+</div>
+</div>
+</div>
+<!-- Right: Numeric Keypad Section -->
+<div class="lg:col-span-3 flex flex-col gap-4 order-3">
+<div class="glass-panel p-4 md:p-6 rounded-[2.5rem] shadow-2xl">
+<div class="grid grid-cols-3 gap-3">
+<!-- Keypad Buttons -->
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">1</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">2</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">3</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">4</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">5</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">6</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">7</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">8</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">9</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-tertiary/20 hover:text-tertiary transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">0</button>
+<button class="aspect-square flex items-center justify-center rounded-2xl bg-primary text-on-primary-container shadow-[0_0_20px_rgba(107,255,143,0.3)] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined font-bold" data-icon="keyboard_return">keyboard_return</span>
+</button>
+</div>
+</div>
+<!-- Mobile Skip Button -->
+<button class="lg:hidden w-full py-4 px-6 rounded-2xl bg-surface-container-highest text-on-surface font-bold flex items-center justify-center gap-2">
+<span>Atla</span>
+<span class="material-symbols-outlined text-sm" data-icon="fast_forward">fast_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#0e0e0e]/90 backdrop-blur-2xl rounded-t-3xl border-t border-white/5 z-50">
+<a class="flex flex-col items-center justify-center text-[#6bff8f] bg-[#6bff8f]/10 rounded-2xl p-2 scale-110 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Test</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Academy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</a>
+</nav>
+<!-- Decorative Screen Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute top-[40%] -right-[10%] w-[40%] h-[40%] bg-secondary/5 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

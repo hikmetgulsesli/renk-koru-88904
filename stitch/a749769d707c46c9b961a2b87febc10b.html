@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#ffffff",
+                    "on-tertiary-fixed": "#3a0003",
+                    "surface-container-low": "#131313",
+                    "tertiary-container": "#fd4e4d",
+                    "on-primary-fixed": "#004a1d",
+                    "surface-bright": "#2c2c2c",
+                    "error-container": "#b92902",
+                    "primary-fixed": "#6bff8f",
+                    "primary-container": "#0abc56",
+                    "on-primary": "#005f28",
+                    "outline-variant": "#484847",
+                    "on-primary-fixed-variant": "#006a2d",
+                    "tertiary-fixed": "#ff928b",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-on-surface": "#565555",
+                    "on-primary-container": "#002c0f",
+                    "outline": "#767575",
+                    "on-tertiary-container": "#1f0001",
+                    "primary": "#6bff8f",
+                    "tertiary-fixed-dim": "#ff7b74",
+                    "on-secondary": "#001e4a",
+                    "secondary-dim": "#699cff",
+                    "inverse-primary": "#006e2f",
+                    "on-secondary-container": "#f7f7ff",
+                    "primary-dim": "#5bf083",
+                    "tertiary-dim": "#ff716a",
+                    "secondary": "#699cff",
+                    "on-secondary-fixed": "#003271",
+                    "on-tertiary": "#490005",
+                    "surface": "#0e0e0e",
+                    "error": "#ff7351",
+                    "on-surface-variant": "#adaaaa",
+                    "background": "#0e0e0e",
+                    "on-error-container": "#ffd2c8",
+                    "surface-variant": "#262626",
+                    "surface-container": "#1a1a1a",
+                    "secondary-fixed": "#bfd1ff",
+                    "surface-container-high": "#20201f",
+                    "on-background": "#ffffff",
+                    "surface-tint": "#6bff8f",
+                    "surface-container-lowest": "#000000",
+                    "tertiary": "#ff716a",
+                    "primary-fixed-dim": "#5bf083",
+                    "secondary-container": "#005ac2",
+                    "error-dim": "#d53d18",
+                    "on-secondary-fixed-variant": "#004da8",
+                    "on-tertiary-fixed-variant": "#79000e",
+                    "surface-dim": "#0e0e0e",
+                    "on-error": "#450900",
+                    "secondary-fixed-dim": "#a9c4ff",
+                    "surface-container-highest": "#262626"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-shift { background-color: var(--tw-bg-opacity); }
+      body { background-color: #0e0e0e; color: #ffffff; font-family: 'Inter', sans-serif; }
+      .glass-card {
+        background: rgba(38, 38, 38, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(107, 255, 143, 0.05);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="hover:bg-primary/10 p-2 rounded-full transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">arrow_back</span>
+</button>
+<div class="text-xl font-bold tracking-tighter text-[#6bff8f] font-manrope">Luminous Precision</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="hidden md:block text-primary font-manrope tracking-tight font-bold">Score: 2450</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-12 px-6 max-w-7xl mx-auto w-full">
+<!-- Title Section -->
+<section class="mb-12">
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-background mb-4">
+                Zorluk <span class="text-primary">Seçimi</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl font-body">
+                Görsel algınızı test etmek için uygun hassasiyet seviyesini belirleyin. Her seviye farklı bir spektrum derinliği sunar.
+            </p>
+</section>
+<!-- Difficulty Cards - Bento Style Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<!-- Kolay -->
+<div class="glass-card p-8 rounded-[2rem] flex flex-col justify-between group hover:bg-primary/5 transition-all duration-300 cursor-pointer border-l-4 border-l-primary/20">
+<div>
+<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined">radio_button_checked</span>
+</div>
+<h2 class="text-3xl font-headline font-bold mb-4">Kolay</h2>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Büyük rakamlar, net renkler ve yüksek kontrastlı geçişler. Temel tarama için idealdir.
+                    </p>
+</div>
+<div class="mt-8 flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest">
+<span>SEÇİM YAP</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+<!-- Orta -->
+<div class="glass-card p-8 rounded-[2rem] flex flex-col justify-between group hover:bg-secondary/5 transition-all duration-300 cursor-pointer border-l-4 border-l-secondary/20">
+<div>
+<div class="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 text-secondary">
+<span class="material-symbols-outlined">target</span>
+</div>
+<h2 class="text-3xl font-headline font-bold mb-4">Orta</h2>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Daha ince ton geçişleri ve karmaşık desenler. Standart klinik test derinliği.
+                    </p>
+</div>
+<div class="mt-8 flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-widest">
+<span>SEÇİM YAP</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+<!-- Zor -->
+<div class="glass-card p-8 rounded-[2rem] flex flex-col justify-between group hover:bg-tertiary/5 transition-all duration-300 cursor-pointer border-l-4 border-l-tertiary/20">
+<div>
+<div class="w-12 h-12 bg-tertiary/10 rounded-2xl flex items-center justify-center mb-6 text-tertiary">
+<span class="material-symbols-outlined">shutter_speed</span>
+</div>
+<h2 class="text-3xl font-headline font-bold mb-4">Zor</h2>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Mikro ton farkları ve yoğun görsel gürültü. Profesyonel düzeyde renk analizi.
+                    </p>
+</div>
+<div class="mt-8 flex items-center gap-2 text-tertiary font-bold text-sm uppercase tracking-widest">
+<span>SEÇİM YAP</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Color Blindness Info Section - Asymmetric Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-5">
+<div class="bg-surface-container-high p-10 rounded-[3rem] relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-2xl font-headline font-bold mb-6">Test Kapsamı</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                            Renk Koru, dünya çapında en yaygın görülen üç ana renk görme eksikliği tipini analiz eder. Test sırasında bu spektrumlar üzerinde hassas ölçümler yapılır.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<div>
+<span class="block font-bold text-on-surface">Protanopi</span>
+<span class="text-sm text-on-surface-variant">Kırmızı ışığa duyarlı fotoreseptör eksikliği.</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<span class="block font-bold text-on-surface">Deuteranopi</span>
+<span class="text-sm text-on-surface-variant">Yeşil ışığa duyarlı fotoreseptör eksikliği.</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<div>
+<span class="block font-bold text-on-surface">Tritanopi</span>
+<span class="text-sm text-on-surface-variant">Mavi ışığa duyarlı fotoreseptör eksikliği.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative background glow -->
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="aspect-square rounded-[2rem] overflow-hidden">
+<img alt="Abstract color spectrum" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Abstract macro shot of vibrant oil and water mixing with deep primary colors and intricate bubble textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUfqiR7sPur0AX0UH3xd6x7xMCR1l6d9eHHkdlzPwZI2cmU12-Rb-O4Xs0EdVdXgszXgfATDx9G8ragEZXaGyzIN_AgbfSlTnadq11BM8VKHJgW6v-9tkf3rDVCXRjkTF4FThqtsYaUkNrRhQGvEc2JbrbQhReI29r8xk2gabtr3AtRozX0ru-t1_genHNAkAh7wxzLlFSnU_vunoIVFKakjwGZo07xFFU41K3Wx-oPHKNCh8sgJP2klIXKtSa6Dq6aJa2_pRcB5jd"/>
+</div>
+<div class="bg-surface-container-low p-8 rounded-[2rem] flex flex-col justify-end">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl">science</span>
+<h4 class="text-xl font-bold mb-2">Klinik Veri</h4>
+<p class="text-sm text-on-surface-variant">
+                        Sonuçlarınız, uluslararası Ishihara ve Farnsworth-Munsell standartları temel alınarak raporlanır.
+                    </p>
+</div>
+<div class="md:col-span-2 bg-gradient-to-r from-primary/20 to-secondary/20 p-8 rounded-[2rem] flex items-center justify-between">
+<div>
+<h4 class="text-xl font-bold mb-1">Daha Fazla Bilgi</h4>
+<p class="text-sm text-on-surface-variant">Renk körlüğü tipleri ve genetik kökenleri hakkında rehberi oku.</p>
+</div>
+<button class="bg-on-background text-background px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform">
+                        REHBERE GİT
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only Viewport Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#0e0e0e]/90 backdrop-blur-2xl border-t border-white/5 z-50 flex justify-around items-center px-4 py-3 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#6bff8f] bg-[#6bff8f]/10 rounded-2xl p-2 scale-110">
+<span class="material-symbols-outlined">palette</span>
+<span class="text-[10px] uppercase tracking-widest font-bold mt-1">Test</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] uppercase tracking-widest font-bold mt-1">Stats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] uppercase tracking-widest font-bold mt-1">Academy</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all">
+<span class="material-symbols-outlined">tune</span>
+<span class="text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</div>
+</nav>
+<!-- Desktop Side Navigation Logic can be added here if needed based on JSON, but TopAppBar and Main Content are prioritized for the request -->
+</body></html>

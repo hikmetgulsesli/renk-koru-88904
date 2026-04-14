@@ -1,0 +1,1927 @@
+{
+  "generatedAt": "2026-04-14T07:35:25.877Z",
+  "screenCount": 6,
+  "screens": {
+    "0fea6c5280c8442ea4970b861281d7c7": {
+      "screenId": "0fea6c5280c8442ea4970b861281d7c7",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "relative",
+            "z-10",
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "min-h-screen",
+            "px-6",
+            "pt-16",
+            "pb-24"
+          ],
+          "childCount": 9
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "px-4",
+            "py-3",
+            "pb-safe"
+          ],
+          "childCount": 4
+        }
+      ],
+      "buttons": [
+        {
+          "label": "settings",
+          "classes": [
+            "text-neutral-400",
+            "hover:text-[#6bff8f]",
+            "transition-colors",
+            "p-2"
+          ],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "account_circle",
+          "classes": [
+            "text-neutral-400",
+            "hover:text-[#6bff8f]",
+            "transition-colors",
+            "p-2"
+          ],
+          "icon": "account_circle",
+          "action": "click-action"
+        },
+        {
+          "label": "BAŞLA\n                    arrow_forward",
+          "classes": [
+            "md:col-span-2",
+            "group",
+            "relative",
+            "overflow-hidden",
+            "bg-primary",
+            "py-6",
+            "rounded-2xl",
+            "transition-all",
+            "duration-300",
+            "hover:scale-[1.02]",
+            "active:scale-95",
+            "shadow-[0_0_40px_rgba(107,255,143,0.2)]"
+          ],
+          "icon": "arrow_forward",
+          "action": "click-action"
+        },
+        {
+          "label": "tune\nAyarlar",
+          "classes": [
+            "glass-panel",
+            "py-5",
+            "rounded-2xl",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "text-on-surface",
+            "hover:bg-surface-variant",
+            "transition-colors",
+            "active:scale-95"
+          ],
+          "icon": "tune",
+          "action": "click-action"
+        },
+        {
+          "label": "info\nBilgi",
+          "classes": [
+            "glass-panel",
+            "py-5",
+            "rounded-2xl",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "text-on-surface",
+            "hover:bg-surface-variant",
+            "transition-colors",
+            "active:scale-95"
+          ],
+          "icon": "info",
+          "action": "click-action",
+          "expectedRoute": "/about",
+          "routeInferred": true
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "arrow_forward",
+          "classes": [],
+          "icon": "arrow_forward",
+          "action": "click-action"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action"
+        },
+        {
+          "label": "info",
+          "classes": [],
+          "icon": "info",
+          "action": "click-action",
+          "expectedRoute": "/about",
+          "routeInferred": true
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "settings",
+        "account_circle",
+        "emoji_events",
+        "arrow_forward",
+        "tune",
+        "info",
+        "palette",
+        "analytics",
+        "school"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBbYn9w5t_aGjW6x1T1xPamRZzUmALCKIlPgkapVJRRZtOyNXOg0p4Lcx91pGOEGYBSkHXsoE7oMvrbSXr016n543wfOgb9RmYFzNxYggkLygysqKz4lFWU5CtMauUBgLv8ICOlodvzaKvydQLtr2",
+          "alt": "Chromatic abstract circles"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": false
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": false
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": false
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": false
+        }
+      ],
+      "title": "Ana Menü"
+    },
+    "39445768491b4612a1d9b7ab1d713e8e": {
+      "screenId": "39445768491b4612a1d9b7ab1d713e8e",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "main",
+          "layout": "block",
+          "classes": [
+            "pt-24",
+            "pb-32",
+            "px-6",
+            "max-w-4xl",
+            "mx-auto"
+          ],
+          "childCount": 28
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "px-4",
+            "py-3"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Profili Düzenle",
+          "classes": [
+            "ml-auto",
+            "bg-surface-container-highest",
+            "px-6",
+            "py-3",
+            "rounded-xl",
+            "font-bold",
+            "text-sm",
+            "hover:bg-primary",
+            "hover:text-on-primary",
+            "transition-all",
+            "duration-300",
+            "scale-95",
+            "active:scale-90"
+          ],
+          "icon": null,
+          "action": "edit"
+        },
+        {
+          "label": "school\n\nAkademiye Göz At",
+          "classes": [
+            "bg-secondary-container",
+            "text-on-secondary-container",
+            "h-32",
+            "rounded-[2rem]",
+            "p-8",
+            "flex",
+            "flex-col",
+            "justify-end",
+            "relative",
+            "overflow-hidden",
+            "group"
+          ],
+          "icon": "school",
+          "action": "click-action",
+          "expectedRoute": "#"
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "#"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action",
+          "expectedRoute": "#"
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [
+        {
+          "type": "checkbox",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "sr-only",
+            "peer"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "sr-only",
+            "peer"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "sr-only",
+            "peer"
+          ]
+        }
+      ],
+      "navLinks": [
+        {
+          "label": "Test",
+          "href": "#",
+          "classes": [
+            "text-neutral-400",
+            "font-medium",
+            "hover:text-[#6bff8f]",
+            "hover:bg-[#6bff8f]/10",
+            "transition-colors",
+            "px-3",
+            "py-1",
+            "rounded-lg"
+          ],
+          "icon": null
+        },
+        {
+          "label": "History",
+          "href": "#",
+          "classes": [
+            "text-neutral-400",
+            "font-medium",
+            "hover:text-[#6bff8f]",
+            "hover:bg-[#6bff8f]/10",
+            "transition-colors",
+            "px-3",
+            "py-1",
+            "rounded-lg"
+          ],
+          "icon": null
+        },
+        {
+          "label": "Insights",
+          "href": "#",
+          "classes": [
+            "text-neutral-400",
+            "font-medium",
+            "hover:text-[#6bff8f]",
+            "hover:bg-[#6bff8f]/10",
+            "transition-colors",
+            "px-3",
+            "py-1",
+            "rounded-lg"
+          ],
+          "icon": null
+        },
+        {
+          "label": "Settings",
+          "href": "#",
+          "classes": [
+            "text-[#6bff8f]",
+            "font-bold",
+            "border-b-2",
+            "border-[#6bff8f]",
+            "px-3",
+            "py-1"
+          ],
+          "icon": null
+        },
+        {
+          "label": "palette\nTest",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all"
+          ],
+          "icon": "palette"
+        },
+        {
+          "label": "analytics\nStats",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all"
+          ],
+          "icon": "analytics"
+        },
+        {
+          "label": "school\nAcademy",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all"
+          ],
+          "icon": "school"
+        },
+        {
+          "label": "tune\nSettings",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-[#6bff8f]",
+            "bg-[#6bff8f]/10",
+            "rounded-2xl",
+            "p-2",
+            "scale-110"
+          ],
+          "icon": "tune"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "settings",
+        "account_circle",
+        "accessibility_new",
+        "tune",
+        "expand_more",
+        "verified",
+        "school",
+        "palette",
+        "analytics"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuADqAgdqUyrfY3V4zn5bjm-YOWBIi9gAQAYXn8iopQq0vatDd19GnqqhhmGV5FqbVI0BZRsPJhHL6mrAd4Z_E19tVW6iGyXiue54nc2La0rCeKZmSBjx99kfyCsb45oyLp6NAR-tAMeLtgmnzpkVz",
+          "alt": "Profile"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "8"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": false
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": false
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": false
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": false
+        }
+      ],
+      "title": "Ayarlar"
+    },
+    "72d02fd01c4c43f1ab3848a279400fc9": {
+      "screenId": "72d02fd01c4c43f1ab3848a279400fc9",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "block",
+          "classes": [
+            "pt-24",
+            "pb-32",
+            "px-6",
+            "max-w-7xl",
+            "mx-auto"
+          ],
+          "childCount": 50
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "px-4",
+            "py-3",
+            "pb-safe"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "arrow_back",
+          "classes": [
+            "flex",
+            "items-center",
+            "justify-center",
+            "w-10",
+            "h-10",
+            "rounded-full",
+            "hover:bg-white/10",
+            "transition-colors"
+          ],
+          "icon": "arrow_back",
+          "action": "click-action"
+        },
+        {
+          "label": "Detaylı İncele",
+          "classes": [
+            "mt-8",
+            "py-3",
+            "px-6",
+            "rounded-xl",
+            "bg-white/5",
+            "hover:bg-white/10",
+            "text-on-surface",
+            "font-bold",
+            "text-sm",
+            "transition-all",
+            "border",
+            "border-white/10"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "arrow_back",
+          "classes": [],
+          "icon": "arrow_back",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "visibility",
+          "classes": [],
+          "icon": "visibility",
+          "action": "click-action"
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action",
+          "expectedRoute": "#"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action",
+          "expectedRoute": "#"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "palette\nTest",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "palette"
+        },
+        {
+          "label": "analytics\nStats",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "analytics"
+        },
+        {
+          "label": "school\nAcademy",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-primary",
+            "bg-primary/10",
+            "rounded-2xl",
+            "p-2",
+            "scale-110"
+          ],
+          "icon": "school"
+        },
+        {
+          "label": "tune\nSettings",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "tune"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "arrow_back",
+        "settings",
+        "account_circle",
+        "visibility",
+        "category",
+        "traffic",
+        "restaurant",
+        "brush",
+        "school",
+        "palette",
+        "analytics",
+        "tune"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUCMwGjMeX0I4xVz9UC_4ENw5vKv4E7Ejs-2cVh8eVhv9rVBBzC87vCUwTefP-2aEYL-tjmHe3BIKNnJXssB3V8L3x7pG50y2nq3R_hXJCUcxrnu_Hamul5gM5G9ZHgGsRKq5k9ZUkkKPPDUdgIv",
+          "alt": "Modern abstract representation of an Ishihara color blindness test plate with vibrant green and soft red dots forming a subtle geometric shape"
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuA4AQtdNNuudaQ2BIGjJETB2Zz8vxz6z2X62ujZY0df3jT2oli7oGrRPIo4MuipRFcgLOkMplw9p-BNcPqasx2VH5YL_gu904VBBv1SjN9wbLJAIc4cZA-m-plWwZ8JfXuR0474Pe0bzN58t3_t8b",
+          "alt": "Comparison of a vibrant red flower in a garden under full spectrum normal vision"
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuDFa-_FQNMR6mVfyHHb_f096oKXUuaUjTnKy2j3TSrgbeiL527Xpi3Te7BGhZ8nDVK605Lp3jq6pg9JYMVRDKEVZInpcRLNyFyV3s4LbO24XfTD_vE5ZXrldmBlp_Oh0b3qc3agZoTMY1ICOBcTYU",
+          "alt": "Same red flower garden simulated under Protanopia with muted earthy brownish tones and yellow greens"
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCA4LbfDAgQ2FuGGPh5vRTyl9CVIYDyQ5rMYnJIaFr_-PHpcyRpPPF4RAeY2t44eRncjslKkbVrYfce8d06a4JTwMsQGk7jI0UbIO1lUOeT_Jy54pq2XXMFt5b0Zcgyoei88rN6xkCuN9-lfR3nFK",
+          "alt": "Same red flower garden simulated under Deuteranopia with desaturated greens and soft pinkish yellows"
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAGpVbKeaNKZo-xYbrH8NAANAbV7yTfsgmzKKxLqjg3QkKBwOGRYktqZ_XlxfRo5l5yvIgANAB_6jP4QLylTRGHplcQ_zHBOj_yyDeyLc1FmV5WNPwNpF6RRiXvJTce5WwlyjYAxzqYJTy84idAkz",
+          "alt": "Same red flower garden simulated under Tritanopia where reds and greens are distinct but blues appear greenish"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": true
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": true
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": true
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": true
+        }
+      ],
+      "title": "Bilgi Ekranı"
+    },
+    "a749769d707c46c9b961a2b87febc10b": {
+      "screenId": "a749769d707c46c9b961a2b87febc10b",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl"
+          ],
+          "childCount": 5
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-grow",
+            "pt-24",
+            "pb-12",
+            "px-6",
+            "max-w-7xl",
+            "mx-auto",
+            "w-full"
+          ],
+          "childCount": 34
+        },
+        {
+          "tag": "nav",
+          "layout": "absolute",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "bg-[#0e0e0e]/90",
+            "backdrop-blur-2xl",
+            "border-t",
+            "border-white/5",
+            "z-50"
+          ],
+          "childCount": 4
+        }
+      ],
+      "buttons": [
+        {
+          "label": "arrow_back",
+          "classes": [
+            "hover:bg-primary/10",
+            "p-2",
+            "rounded-full",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "arrow_back",
+          "action": "click-action"
+        },
+        {
+          "label": "REHBERE GİT",
+          "classes": [
+            "bg-on-background",
+            "text-background",
+            "px-6",
+            "py-3",
+            "rounded-full",
+            "font-bold",
+            "hover:scale-105",
+            "transition-transform"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "arrow_back",
+          "classes": [],
+          "icon": "arrow_back",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "chevron_right",
+          "classes": [],
+          "icon": "chevron_right",
+          "action": "click-action"
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "arrow_back",
+        "settings",
+        "account_circle",
+        "radio_button_checked",
+        "chevron_right",
+        "target",
+        "shutter_speed",
+        "science",
+        "palette",
+        "analytics",
+        "school",
+        "tune"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBUfqiR7sPur0AX0UH3xd6x7xMCR1l6d9eHHkdlzPwZI2cmU12-Rb-O4Xs0EdVdXgszXgfATDx9G8ragEZXaGyzIN_AgbfSlTnadq11BM8VKHJgW6v-9tkf3rDVCXRjkTF4FThqtsYaUkNrRhQGvE",
+          "alt": "Abstract color spectrum"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": false
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": false
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": false
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": false
+        }
+      ],
+      "title": "Zorluk Seçimi"
+    },
+    "e5b0e596f5984c14b5ad4754bea5f43d": {
+      "screenId": "e5b0e596f5984c14b5ad4754bea5f43d",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "main",
+          "layout": "block",
+          "classes": [
+            "pt-24",
+            "px-6",
+            "max-w-5xl",
+            "mx-auto"
+          ],
+          "childCount": 46
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "px-4",
+            "py-3",
+            "pb-safe"
+          ],
+          "childCount": 4
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Tekrar Oyna",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "px-12",
+            "py-5",
+            "bg-primary",
+            "text-on-primary",
+            "font-bold",
+            "rounded-full",
+            "hover:scale-105",
+            "active:scale-95",
+            "transition-all",
+            "shadow-[0_0_40px_rgba(107,255,143,0.2)]"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "Ana Menü",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "px-12",
+            "py-5",
+            "glass-card",
+            "text-white",
+            "font-bold",
+            "rounded-full",
+            "hover:bg-surface-variant/40",
+            "active:scale-95",
+            "transition-all",
+            "border",
+            "border-white/10"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "visibility",
+          "classes": [],
+          "icon": "visibility",
+          "action": "click-action"
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "settings",
+        "account_circle",
+        "visibility",
+        "lightbulb",
+        "timer",
+        "palette",
+        "analytics",
+        "school",
+        "tune"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "6"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": true
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": false
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": true
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": true
+        }
+      ],
+      "title": "Sonuç Ekranı"
+    },
+    "e80423a6c57c40f2801fcfbf1c7fd42c": {
+      "screenId": "e80423a6c57c40f2801fcfbf1c7fd42c",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "absolute",
+          "classes": [
+            "fixed",
+            "top-0",
+            "w-full",
+            "z-50",
+            "bg-[#0e0e0e]/80",
+            "backdrop-blur-xl",
+            "transition-all"
+          ],
+          "childCount": 5
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "pt-24",
+            "pb-24",
+            "min-h-screen",
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "px-4",
+            "md:px-8",
+            "max-w-7xl"
+          ],
+          "childCount": 19
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-row",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "w-full",
+            "flex",
+            "justify-around",
+            "items-center",
+            "px-4",
+            "py-3"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Atla\nfast_forward",
+          "classes": [
+            "w-full",
+            "py-4",
+            "px-6",
+            "rounded-xl",
+            "bg-surface-container-highest",
+            "text-on-surface",
+            "font-bold",
+            "hover:bg-surface-bright",
+            "transition-all",
+            "active:scale-95",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2"
+          ],
+          "icon": "fast_forward",
+          "action": "click-action"
+        },
+        {
+          "label": "1",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "2",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "3",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "4",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "5",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "6",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "7",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "8",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "9",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "backspace",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-tertiary/20",
+            "hover:text-tertiary",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "backspace",
+          "action": "click-action"
+        },
+        {
+          "label": "0",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-surface-container-high",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "text-xl",
+            "font-bold",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "keyboard_return",
+          "classes": [
+            "aspect-square",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-2xl",
+            "bg-primary",
+            "text-on-primary-container",
+            "shadow-[0_0_20px_rgba(107,255,143,0.3)]",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "keyboard_return",
+          "action": "click-action"
+        },
+        {
+          "label": "Atla\nfast_forward",
+          "classes": [
+            "lg:hidden",
+            "w-full",
+            "py-4",
+            "px-6",
+            "rounded-2xl",
+            "bg-surface-container-highest",
+            "text-on-surface",
+            "font-bold",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2"
+          ],
+          "icon": "fast_forward",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [],
+          "icon": "settings",
+          "action": "click-action",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "label": "palette",
+          "classes": [],
+          "icon": "palette",
+          "action": "click-action",
+          "expectedRoute": "#"
+        },
+        {
+          "label": "tune",
+          "classes": [],
+          "icon": "tune",
+          "action": "click-action",
+          "expectedRoute": "#"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "palette\nTest",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-[#6bff8f]",
+            "bg-[#6bff8f]/10",
+            "rounded-2xl",
+            "p-2",
+            "scale-110",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "palette"
+        },
+        {
+          "label": "analytics\nStats",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "analytics"
+        },
+        {
+          "label": "school\nAcademy",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "school"
+        },
+        {
+          "label": "tune\nSettings",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "justify-center",
+            "text-neutral-500",
+            "p-2",
+            "hover:text-white",
+            "transition-all",
+            "active:scale-90",
+            "duration-150"
+          ],
+          "icon": "tune"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "settings",
+        "account_circle",
+        "fast_forward",
+        "backspace",
+        "keyboard_return",
+        "palette",
+        "analytics",
+        "school",
+        "tune"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCCu9mqR6QSN-1Ud-QFQcJMW2E-XQj9Yl3ao6WMvVAcxfyo_AuvDaEN1VDrl6WT57YkQhbdD2g9KQgQAcdt4IbScnjkI7gW4JX6rPsgqh0Bma-PDHjuV9IXmwdWfucQf85EVJxxtqLfPr94JQTYkA",
+          "alt": "Ishihara Test Plate"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "on-surface": "#ffffff",
+        "on-tertiary-fixed": "#3a0003",
+        "surface-container-low": "#131313",
+        "tertiary-container": "#fd4e4d",
+        "on-primary-fixed": "#004a1d",
+        "surface-bright": "#2c2c2c",
+        "error-container": "#b92902",
+        "primary-fixed": "#6bff8f",
+        "primary-container": "#0abc56",
+        "on-primary": "#005f28",
+        "outline-variant": "#484847",
+        "on-primary-fixed-variant": "#006a2d",
+        "tertiary-fixed": "#ff928b",
+        "inverse-surface": "#fcf9f8",
+        "inverse-on-surface": "#565555",
+        "on-primary-container": "#002c0f",
+        "outline": "#767575",
+        "on-tertiary-container": "#1f0001",
+        "primary": "#6bff8f",
+        "tertiary-fixed-dim": "#ff7b74",
+        "on-secondary": "#001e4a",
+        "secondary-dim": "#699cff",
+        "inverse-primary": "#006e2f",
+        "on-secondary-container": "#f7f7ff",
+        "primary-dim": "#5bf083",
+        "tertiary-dim": "#ff716a",
+        "secondary": "#699cff",
+        "on-secondary-fixed": "#003271",
+        "on-tertiary": "#490005",
+        "surface": "#0e0e0e",
+        "error": "#ff7351",
+        "on-surface-variant": "#adaaaa",
+        "background": "#0e0e0e",
+        "on-error-container": "#ffd2c8",
+        "surface-variant": "#262626",
+        "surface-container": "#1a1a1a",
+        "secondary-fixed": "#bfd1ff",
+        "surface-container-high": "#20201f",
+        "on-background": "#ffffff",
+        "surface-tint": "#6bff8f",
+        "surface-container-lowest": "#000000",
+        "tertiary": "#ff716a",
+        "primary-fixed-dim": "#5bf083",
+        "secondary-container": "#005ac2",
+        "error-dim": "#d53d18",
+        "on-secondary-fixed-variant": "#004da8",
+        "on-tertiary-fixed-variant": "#79000e",
+        "surface-dim": "#0e0e0e",
+        "on-error": "#450900",
+        "secondary-fixed-dim": "#a9c4ff",
+        "surface-container-highest": "#262626"
+      },
+      "fonts": [
+        "Manrope",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "6"
+      },
+      "tabBar": [
+        {
+          "label": "Test",
+          "icon": "palette",
+          "active": true
+        },
+        {
+          "label": "Stats",
+          "icon": "analytics",
+          "active": true
+        },
+        {
+          "label": "Academy",
+          "icon": "school",
+          "active": true
+        },
+        {
+          "label": "Settings",
+          "icon": "tune",
+          "active": true
+        }
+      ],
+      "title": "Oyun Ekranı"
+    }
+  }
+}

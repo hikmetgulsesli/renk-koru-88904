@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayarlar - Renk Koru</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#ffffff",
+                    "on-tertiary-fixed": "#3a0003",
+                    "surface-container-low": "#131313",
+                    "tertiary-container": "#fd4e4d",
+                    "on-primary-fixed": "#004a1d",
+                    "surface-bright": "#2c2c2c",
+                    "error-container": "#b92902",
+                    "primary-fixed": "#6bff8f",
+                    "primary-container": "#0abc56",
+                    "on-primary": "#005f28",
+                    "outline-variant": "#484847",
+                    "on-primary-fixed-variant": "#006a2d",
+                    "tertiary-fixed": "#ff928b",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-on-surface": "#565555",
+                    "on-primary-container": "#002c0f",
+                    "outline": "#767575",
+                    "on-tertiary-container": "#1f0001",
+                    "primary": "#6bff8f",
+                    "tertiary-fixed-dim": "#ff7b74",
+                    "on-secondary": "#001e4a",
+                    "secondary-dim": "#699cff",
+                    "inverse-primary": "#006e2f",
+                    "on-secondary-container": "#f7f7ff",
+                    "primary-dim": "#5bf083",
+                    "tertiary-dim": "#ff716a",
+                    "secondary": "#699cff",
+                    "on-secondary-fixed": "#003271",
+                    "on-tertiary": "#490005",
+                    "surface": "#0e0e0e",
+                    "error": "#ff7351",
+                    "on-surface-variant": "#adaaaa",
+                    "background": "#0e0e0e",
+                    "on-error-container": "#ffd2c8",
+                    "surface-variant": "#262626",
+                    "surface-container": "#1a1a1a",
+                    "secondary-fixed": "#bfd1ff",
+                    "surface-container-high": "#20201f",
+                    "on-background": "#ffffff",
+                    "surface-tint": "#6bff8f",
+                    "surface-container-lowest": "#000000",
+                    "tertiary": "#ff716a",
+                    "primary-fixed-dim": "#5bf083",
+                    "secondary-container": "#005ac2",
+                    "error-dim": "#d53d18",
+                    "on-secondary-fixed-variant": "#004da8",
+                    "on-tertiary-fixed-variant": "#79000e",
+                    "surface-dim": "#0e0e0e",
+                    "on-error": "#450900",
+                    "secondary-fixed-dim": "#a9c4ff",
+                    "surface-container-highest": "#262626"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .tonal-shift {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#6bff8f] font-headline">Luminous Precision</div>
+<div class="hidden md:flex gap-8">
+<a class="text-neutral-400 font-medium hover:text-[#6bff8f] hover:bg-[#6bff8f]/10 transition-colors px-3 py-1 rounded-lg" href="#">Test</a>
+<a class="text-neutral-400 font-medium hover:text-[#6bff8f] hover:bg-[#6bff8f]/10 transition-colors px-3 py-1 rounded-lg" href="#">History</a>
+<a class="text-neutral-400 font-medium hover:text-[#6bff8f] hover:bg-[#6bff8f]/10 transition-colors px-3 py-1 rounded-lg" href="#">Insights</a>
+<a class="text-[#6bff8f] font-bold border-b-2 border-[#6bff8f] px-3 py-1" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[#6bff8f] font-bold font-headline text-sm bg-primary/10 px-3 py-1 rounded-full">Score: 2450</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto">
+<header class="mb-12">
+<h1 class="text-5xl font-extrabold font-headline tracking-tighter mb-4 text-on-surface">Ayarlar</h1>
+<p class="text-on-surface-variant text-lg max-w-xl">Deneyiminizi bilimsel hassasiyetle kişiselleştirin. Tüm değişiklikler anında uygulanır.</p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Quick Profile Bento -->
+<section class="md:col-span-12 glass-panel rounded-[2rem] p-8 flex items-center gap-6 border border-white/5 tonal-shift">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20 p-1">
+<img alt="Profile" class="w-full h-full object-cover rounded-full" data-alt="Professional studio headshot of a person with neutral expression, high-end editorial lighting, dark background, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADqAgdqUyrfY3V4zn5bjm-YOWBIi9gAQAYXn8iopQq0vatDd19GnqqhhmGV5FqbVI0BZRsPJhHL6mrAd4Z_E19tVW6iGyXiue54nc2La0rCeKZmSBjx99kfyCsb45oyLp6NAR-tAMeLtgmnzpkVziStV2WCV6q7tWdqWnLuGbv0JZrPbn9D93lTi50khr9lCpG84iWBNvLs_nbljMvcadm_9mk_o8rMvQTT1-p6KMe5W79wuQlurdjYu_-d_cToD4XIFXzA0iZiOsg"/>
+</div>
+<div>
+<h2 class="text-2xl font-bold font-headline">Pro Curator</h2>
+<p class="text-primary font-medium tracking-wide text-sm uppercase">Level 12 Specialist</p>
+</div>
+<button class="ml-auto bg-surface-container-highest px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary hover:text-on-primary transition-all duration-300 scale-95 active:scale-90">
+                    Profili Düzenle
+                </button>
+</section>
+<!-- Settings Categories -->
+<div class="md:col-span-8 flex flex-col gap-6">
+<!-- Accessibility Section -->
+<section class="bg-surface-container-low rounded-[2rem] p-8 border border-white/5">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">accessibility_new</span>
+<h3 class="text-xl font-bold font-headline">Erişilebilirlik</h3>
+</div>
+<div class="space-y-8">
+<!-- High Contrast -->
+<div class="flex items-center justify-between group">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg group-hover:text-primary transition-colors">Yüksek Kontrast</span>
+<span class="text-on-surface-variant text-sm">Metin ve arayüz elemanları arasındaki kontrastı artırır.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Screen Reader -->
+<div class="flex items-center justify-between group">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg group-hover:text-primary transition-colors">Ekran Okuyucu Desteği</span>
+<span class="text-on-surface-variant text-sm">Sesli geri bildirim ve optimize edilmiş navigasyon.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Audio & Experience Section -->
+<section class="bg-surface-container-low rounded-[2rem] p-8 border border-white/5">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-secondary">tune</span>
+<h3 class="text-xl font-bold font-headline">Deneyim</h3>
+</div>
+<div class="space-y-8">
+<!-- Sound Effects -->
+<div class="flex items-center justify-between group">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg group-hover:text-secondary transition-colors">Ses Efektleri</span>
+<span class="text-on-surface-variant text-sm">Test etkileşimleri ve başarı bildirimleri için sesler.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Language -->
+<div class="flex items-center justify-between group">
+<div class="flex flex-col gap-1">
+<span class="font-bold text-lg group-hover:text-secondary transition-colors">Dil Seçimi</span>
+<span class="text-on-surface-variant text-sm">Uygulama arayüz dili.</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-highest px-4 py-2 rounded-xl">
+<span class="text-sm font-bold">Türkçe</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Side Bento Column -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Info Card -->
+<div class="bg-primary/5 rounded-[2rem] p-8 border border-primary/10 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h4 class="text-xl font-bold font-headline leading-tight">Bilimsel Otorite</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Ayarlarınız, Ishihara ve Farnsworth-Munsell test standartlarına tam uyum sağlayacak şekilde optimize edilmiştir.</p>
+</div>
+<!-- Update Status -->
+<div class="bg-surface-container-high rounded-[2rem] p-8 border border-white/5">
+<p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">Versiyon</p>
+<p class="text-2xl font-black font-headline text-on-surface">v4.2.0-stable</p>
+<div class="mt-6 flex items-center gap-2 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold uppercase tracking-wider">Sistem Güncel</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="bg-secondary-container text-on-secondary-container h-32 rounded-[2rem] p-8 flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-4 right-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl">school</span>
+</div>
+<span class="text-lg font-bold">Akademiye Göz At</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#0e0e0e]/90 backdrop-blur-2xl z-50 rounded-t-3xl border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">palette</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Test</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Academy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#6bff8f] bg-[#6bff8f]/10 rounded-2xl p-2 scale-110" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

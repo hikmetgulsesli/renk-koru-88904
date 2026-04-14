@@ -1,0 +1,277 @@
+# Renk Koru — Ishihara Tarzı Renk Körlüğü Testi
+
+## 1. Proje Özeti
+
+**Proje Adı:** Renk Koru  
+**Proje Türü:** Web tabanlı oyun / interaktif test  
+**Platform:** Web (mobil uyumlu responsive tasarım)  
+**Özet:** Ishihara tarzı renk körlüğü testi uygulaması. Kullanıcılar rastgele seçilen rakamları/şekilleri içeren renkli daireler görür, gördüklerini girer ve 10 soru sonunda skor alır.  
+**Hedef Kullanıcı:** Kendi renk algısını test etmek isteyen herkes.
+
+---
+
+## 2. Hedefler
+
+- Eğlenceli ve öğretici bir renk körlüğü tarama deneyimi sunmak
+- Farklı zorluk seviyelerinde (kolay/orta/zor) oynanabilirlik sağlamak
+- WCAG uyumlu, erişilebilir bir arayüz tasarlamak
+- Mobil ve masaüstü tarayıcılarda sorunsuz çalışmak
+- Hızlı yükleme ve akıcı animasyonlar ile modern bir his vermek
+
+---
+
+## 3. Fonksiyonel Gereksinimler
+
+### 3.1 Oyun Mekaniği
+
+**Ishihara Plakları:**
+- Her soru, merkezinde gizlenmiş rakam veya şekil olan renkli noktalardan oluşan dairesel bir plak gösterir
+- Plaklar canvas üzerinde procedurally generated olarak oluşturulur
+- Rakamlar: 0-99 arası rastgele 1-2 basamaklı sayılar
+- Şekiller (zor mod): yıldız, daire, kare, üçgen, kalp
+
+**Zorluk Seviyeleri:**
+| Seviye | Arka Plan Renkleri | Rakam Renk Farkı | Nokta Boyutu | Desen Karmaşıklığı |
+|--------|-------------------|------------------|--------------|-------------------|
+| Kolay  | Mavi/Yeşil tonları | Yüksek (ΔE > 30) | Büyük | Düzgün dağılım |
+| Orta   | Kırmızı/Yeşil tonları | Orta (ΔE 15-30) | Orta | Orta düzensiz |
+| Zor    | Tüm renkler | Düşük (ΔE < 15) | Küçük | Karmaşık desen |
+
+**Oyun Akışı:**
+1. Ana menü → Zorluk seçimi
+2. 10 soru (her biri ~15 saniye)
+3. Her soru için kullanıcı gördüğü rakamı/şekli girer
+4. Doğru/yanlış anlık feedback
+5. 10 soru sonunda final skor ekranı
+
+**Skorlama:**
+- Her doğru cevap: +10 puan
+- Yanlış cevap: 0 puan
+- Bonus (tüm soruları doğru): +20 puan
+- Maksimum skor: 120 puan
+
+### 3.2 Kullanıcı Etkileşimleri
+
+- **Rakam girişi:** Ekran klavyesi veya fiziksel klavye ile
+- **Şekil seçimi:** Dörtgen, daire, üçgen, yıldız, kalp butonları
+- **Geri alma:** Son karakteri sil butonu
+- **Süre:** Her soru için 15 saniye countdown
+- **Atla:** Soruyu atla (yanlış sayılır)
+
+### 3.3 Veri Yönetimi
+
+- Oyun durumu bellekte tutulur (localStorage ile sonuç kaydı opsiyonel)
+- Yüksek skor localStorage'da saklanır
+- Sunucu gerektirmez (tamamen client-side)
+
+---
+
+## 4. Teknik Gereksinimler
+
+### 4.1 Teknoloji Yığını
+
+| Katman | Teknoloji |
+|--------|-----------|
+| Framework | React 18 + Vite |
+| Styling | Tailwind CSS |
+| State Management | React useState/useReducer |
+| Canvas Rendering | HTML5 Canvas API |
+| Animasyon | Framer Motion |
+| Tip Güvenliği | TypeScript |
+
+### 4.2 Proje Yapısı
+
+```
+src/
+├── components/
+│   ├── IshiharaPlate.tsx      # Canvas tabanlı plak bileşeni
+│   ├── GameHeader.tsx         # Skor, süre, soru sayısı
+│   ├── NumberPad.tsx          # Rakam giriş butonları
+│   ├── DifficultySelect.tsx   # Zorluk seçim ekranı
+│   ├── ResultScreen.tsx       # Final skor ekranı
+│   └── AccessibilityMenu.tsx  # Erişilebilirlik ayarları
+├── hooks/
+│   ├── useGameState.ts        # Oyun durumu yönetimi
+│   ├── useTimer.ts            # Geri sayım
+│   └── useAccessibility.ts    # Erişilebilirlik tercihleri
+├── utils/
+│   ├── colorGeneration.ts     # Ishihara rengi oluşturma
+│   ├── patternGeneration.ts   # Desen algoritması
+│   └── scoring.ts             # Puan hesaplama
+├── types/
+│   └── game.ts                # Tür tanımları
+├── App.tsx
+├── main.tsx
+└── index.css
+```
+
+### 4.3 Canvas Algoritması
+
+**Nokta Oluşturma:**
+1. Daire içinde rastgele noktalar yerleştir
+2. Merkez bölgesindeki noktalar hedef renkte
+3. Çevre noktaları arka plan renklerinde
+4. Gaussian dağılım ile doğal görünüm
+
+**Renk Üretimi:**
+- LAB renk uzayında işlem yap (insan algısına daha uygun)
+- Hedef ve arka plan arasında minimum Delta E farkı uygula
+- Zorluk seviyesine göre Delta E değerini ayarla
+
+### 4.4 Performans Kriterleri
+
+- İlk yükleme: < 2 saniye (3G)
+- Frame rate: 60fps
+- Canvas render: < 100ms
+- Erişilebilirlik: WCAG 2.1 AA uyumlu
+
+---
+
+## 5. UI/UX Gereksinimleri
+
+### 5.1 Sayfa Ekranları
+
+**Ana Menü:**
+- Oyun logosu ve başlık
+- "Başla" butonu
+- "Ayarlar" butonu
+- Yüksek skor gösterimi
+- Sesli rehber için klavye kısayolu bilgisi
+
+**Zorluk Seçimi:**
+- Üç kart: Kolay, Orta, Zor
+- Her kartda zorluk açıklaması
+- Renk körlüğü türü açıklaması (protanopia, deuteranopia, tritanopia)
+
+**Oyun Ekranı:**
+- Ishihara plak gösterimi (merkez)
+- Rakam giriş alanı (plak altı)
+- Sayısal klavye (mobil için)
+- Süre göstergesi (progress bar + sayı)
+- Soru göstergesi: "5/10"
+- Atla butonu (sağ üst)
+
+**Sonuç Ekranı:**
+- Final skor (büyük yazı)
+- Doğru/yanlış istatistikleri
+- Renk körlüğü hakkında bilgi kartı
+- "Tekrar Oyna" butonu
+- "Ana Menü" butonu
+
+**Ayarlar Ekranı:**
+- Ses açık/kapalı
+- Yüksek kontrast modu
+- Ekran okuyucu desteği
+- İpucu gösterimi (açık/kapalı)
+
+### 5.2 Bileşen Durumları
+
+| Bileşen | Varsayılan | Aktif | Devre Dışı | Yükleme |
+|---------|-----------|-------|-----------|---------|
+| Buton | Mavi bg | Koyu mavi | Gri, opak | Spinner |
+| Rakam | Beyaz | Sarı highlight | Gri | - |
+| Plak | Normal | Seçili border | - | Skeleton |
+
+### 5.3 Animasyonlar
+
+- Sayfa geçişleri: 300ms fade + slide
+- Buton hover: 150ms scale(1.05)
+- Rakam girildi: 100ms bounce
+- Doğru cevap: Yeşil pulse + confetti
+- Yanlış cevap: Kırmızı shake
+- Süre azalması: Sarı → Kırmızı gradient
+
+### 5.4 Erişilebilirlik
+
+- Tüm etkileşimler klavye ile yapılabilir
+- ARIA labels tüm butonlarda
+- Ekran okuyucu için alternatif metin
+- Yüksek kontrast modu
+- Font boyutu ayarlanabilir (rem units)
+- Odaklanma göstergeleri görünür
+- Sembol yerine rakam girişi tercih edilebilir
+
+---
+
+## 6. Non-Fonksiyonel Gereksinimler
+
+### 6.1 Güvenlik
+- XSS koruması (React'un varsayılan escaping)
+- CSP headers (production deploy)
+- Kullanıcı verisi yok (gizlilik endişesi yok)
+
+### 6.2 Tarayıcı Desteği
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+- iOS Safari 14+
+- Chrome Android 90+
+
+---
+
+## 7. Oyun Durumu Makinesi
+
+```
+IDLE → (kullanıcı başla tıklar) → DIFFICULTY_SELECT
+DIFFICULTY_SELECT → (zorluk seçilir) → PLAYING
+PLAYING → (cevap girilir veya süre biter) → SHOWING_FEEDBACK
+SHOWING_FEEDBACK → (animasyon biter, soru kaldıysa) → PLAYING
+SHOWING_FEEDBACK → (animasyon biter, soru kalmadıysa) → GAME_OVER
+GAME_OVER → (tekrar oyna) → DIFFICULTY_SELECT
+GAME_OVER → (ana menü) → IDLE
+```
+
+**window.gameState Exposure:**
+```typescript
+window.gameState = {
+  phase: 'IDLE' | 'DIFFICULTY_SELECT' | 'PLAYING' | 'SHOWING_FEEDBACK' | 'GAME_OVER',
+  difficulty: 'easy' | 'medium' | 'hard',
+  currentQuestion: number,
+  score: number,
+  answers: Array<{question: number, correct: boolean, userAnswer: string}>,
+  timeRemaining: number
+}
+```
+
+---
+
+## 8. Input Keys
+
+| Tuş | Aksiyon |
+|-----|---------|
+| 0-9 | Rakam girişi |
+| Backspace | Son karakteri sil |
+| Enter | Cevabı gönder |
+| Escape | Menüye dön |
+| Space | Soruyu atla |
+| Tab | Sonraki elemana odaklan |
+
+---
+
+## 9. Ekranlar (Screens)
+
+| # | Ekran Adı | Tür | Açıklama |
+|---|-----------|-----|----------|
+| 1 | Ana Menü | landing | Logo, başla butonu, yüksek skor, ayarlar |
+| 2 | Zorluk Seçimi | selection | Üç zorluk kartı, renk körlüğü bilgisi |
+| 3 | Oyun Ekranı | game | Ishihara plak, rakam giriş, süre, skor |
+| 4 | Sonuç Ekranı | results | Final skor, istatistikler, tekrar oyna |
+| 5 | Ayarlar | settings | Ses, kontrast, erişilebilirlik seçenekleri |
+| 6 | Bilgi Ekranı | info | Renk körlüğü hakkında eğitici içerik |
+| 7 | Boş Durum | empty | Oyun sırasında bağlantı kesilirse |
+
+---
+
+## 10. Decision Log
+
+Generate a SEPARATE screen design for EVERY page, view, modal, dialog, tab panel, and settings screen described in this PRD. Do NOT skip ANY screen — even if it seems minor.
+
+MANDATORY SCREENS:
+- If the PRD mentions "settings" or "ayarlar" → generate a Settings screen
+- If the PRD mentions tabs or bottom navigation → generate EACH tab view as a separate screen
+- If the PRD mentions modals (statistics, help, share, confirmation) → generate each as a separate screen
+- If the PRD mentions error states, empty states, loading states → generate those too
+- Generate at least as many screens as there are distinct views/pages/modals in the PRD
+
+All visible text must be in Turkish. Use a dark, modern theme.
