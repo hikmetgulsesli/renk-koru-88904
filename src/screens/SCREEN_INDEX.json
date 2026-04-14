@@ -1,0 +1,56 @@
+[
+  {
+    "screenId": "e80423a6c57c40f2801fcfbf1c7fd42c",
+    "title": "Oyun Ekranı",
+    "componentName": "OyunEkrani",
+    "file": "src/screens/OyunEkrani.tsx",
+    "buttons": 14,
+    "inputs": 0,
+    "links": 4
+  },
+  {
+    "screenId": "0fea6c5280c8442ea4970b861281d7c7",
+    "title": "Ana Menü",
+    "componentName": "AnaMenu",
+    "file": "src/screens/AnaMenu.tsx",
+    "buttons": 5,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "e5b0e596f5984c14b5ad4754bea5f43d",
+    "title": "Sonuç Ekranı",
+    "componentName": "SonucEkrani",
+    "file": "src/screens/SonucEkrani.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "a749769d707c46c9b961a2b87febc10b",
+    "title": "Zorluk Seçimi",
+    "componentName": "ZorlukSecimi",
+    "file": "src/screens/ZorlukSecimi.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "39445768491b4612a1d9b7ab1d713e8e",
+    "title": "Ayarlar",
+    "componentName": "Ayarlar",
+    "file": "src/screens/Ayarlar.tsx",
+    "buttons": 2,
+    "inputs": 3,
+    "links": 8
+  },
+  {
+    "screenId": "72d02fd01c4c43f1ab3848a279400fc9",
+    "title": "Bilgi Ekranı",
+    "componentName": "BilgiEkrani",
+    "file": "src/screens/BilgiEkrani.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 4
+  }
+]
