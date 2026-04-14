@@ -7,11 +7,145 @@
 // 3. Add onClick/onChange handlers to interactive elements
 // 4. Replace placeholder data with props/state
 
-import { useState } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { IshiharaPlate } from "../components/IshiharaPlate";
+import { generateIshiharaColors } from "../utils/colorGeneration";
+import { generatePlatePoints } from "../utils/patternGeneration";
+import { calculateScore, calculateTimeBonus } from "../utils/scoring";
+import type { IshiharaPlateData, Answer, Difficulty } from "../types/game";
 
-interface OyunEkraniProps {}
+interface OyunEkraniProps {
+  difficulty?: Difficulty;
+  onGameOver?: (score: number) => void;
+}
 
-export function OyunEkrani(props: OyunEkraniProps) {
+const TOTAL_QUESTIONS = 10;
+const TIME_PER_QUESTION = { easy: 30, medium: 20, hard: 15 };
+
+export function OyunEkrani({ difficulty = 'easy', onGameOver }: OyunEkraniProps) {
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [score, setScore] = useState(0);
+  const [userAnswer, setUserAnswer] = useState('');
+  const [timeRemaining, setTimeRemaining] = useState(TIME_PER_QUESTION[difficulty]);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+
+  // Generate a random digit for each question (seeded by question number)
+  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 10));
+  const targetNumber = useMemo(() => {
+    return String(seed);
+  }, [seed]);
+
+  // Generate plate data for the current question
+  const plateData = useMemo<IshiharaPlateData>(() => {
+    const colors = generateIshiharaColors(difficulty);
+    const plateRadius = 150;
+    const points = generatePlatePoints(plateRadius, difficulty, targetNumber);
+    return {
+      backgroundColors: colors.background,
+      targetColor: colors.target,
+      points,
+      targetValue: targetNumber,
+      radius: plateRadius,
+    };
+  }, [difficulty, targetNumber, seed]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Use a ref for the submit handler to avoid circular deps with the timer
+  const submitRef = useRef<() => void>(() => {});
+
+  const handleSubmit = useCallback(() => {
+    const isCorrect = userAnswer === targetNumber;
+    const timeBonus = isCorrect ? calculateTimeBonus(timeRemaining) : 0;
+    const pointsEarned = isCorrect ? 100 + timeBonus : 0;
+
+    const newAnswer: Answer = {
+      questionNumber: currentQuestion,
+      userAnswer,
+      correctAnswer: targetNumber,
+      isCorrect,
+      timeSpent: timeRemaining,
+    };
+
+    const newAnswers = [...answers, newAnswer];
+    setAnswers(newAnswers);
+    if (pointsEarned > 0) {
+      setScore((prev) => prev + pointsEarned);
+    }
+
+    if (currentQuestion >= TOTAL_QUESTIONS) {
+      setIsGameOver(true);
+      const finalScore = calculateScore(newAnswers);
+      if (onGameOver) {
+        onGameOver(finalScore);
+      }
+    } else {
+      setCurrentQuestion((prev) => prev + 1);
+      setUserAnswer('');
+      setTimeRemaining(TIME_PER_QUESTION[difficulty]);
+      setSeed(Math.floor(Math.random() * 10));
+    }
+  }, [userAnswer, currentQuestion, timeRemaining, answers, targetNumber, onGameOver, difficulty]);
+
+  // Keep ref in sync
+  submitRef.current = handleSubmit;
+
+  useEffect(() => {
+    if (isGameOver) return;
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          submitRef.current();
+          return TIME_PER_QUESTION[difficulty];
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [currentQuestion, isGameOver, difficulty]);
+
+  const handleKeyPress = (key: string) => {
+    if (key === 'backspace') {
+      setUserAnswer((prev) => prev.slice(0, -1));
+    } else if (key === 'enter') {
+      handleSubmit();
+    } else {
+      setUserAnswer((prev) => prev + key);
+    }
+  };
+
+  const handleSkip = () => {
+    const newAnswer: Answer = {
+      questionNumber: currentQuestion,
+      userAnswer: '',
+      correctAnswer: targetNumber,
+      isCorrect: false,
+      timeSpent: timeRemaining,
+    };
+
+    const newAnswers = [...answers, newAnswer];
+    setAnswers(newAnswers);
+
+    if (currentQuestion >= TOTAL_QUESTIONS) {
+      setIsGameOver(true);
+      const finalScore = calculateScore(newAnswers);
+      if (onGameOver) onGameOver(finalScore);
+    } else {
+      setCurrentQuestion((prev) => prev + 1);
+      setUserAnswer('');
+      setTimeRemaining(TIME_PER_QUESTION[difficulty]);
+    }
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const timePercent = (timeRemaining / TIME_PER_QUESTION[difficulty]) * 100;
+
   return (
     <>
       {/*  TopAppBar  */}
@@ -20,14 +154,14 @@ export function OyunEkrani(props: OyunEkraniProps) {
       <div className="text-xl font-bold tracking-tighter text-[#6bff8f] font-manrope">Luminous Precision</div>
       <div className="hidden md:flex items-center gap-6">
       <span className="text-[#6bff8f] font-bold border-b-2 border-[#6bff8f] font-manrope tracking-tight py-1">Test</span>
-      <span className="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">History</span>
-      <span className="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">Insights</span>
+      <span className="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">Geçmiş</span>
+      <span className="text-neutral-400 font-medium font-manrope tracking-tight hover:text-[#6bff8f] transition-colors cursor-pointer">İçgörüler</span>
       </div>
       <div className="flex items-center gap-4">
-      <span className="bg-[#6bff8f]/10 text-[#6bff8f] px-3 py-1 rounded-full text-xs font-bold font-manrope">Score: 2450</span>
+      <span className="bg-[#6bff8f]/10 text-[#6bff8f] px-3 py-1 rounded-full text-xs font-bold font-manrope">Skor: {score}</span>
       <div className="flex gap-2">
-      <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="settings">settings</span>
-      <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" data-icon="account_circle">account_circle</span>
+      <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" aria-label="Ayarlar">settings</span>
+      <span className="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors" aria-label="Hesap">account_circle</span>
       </div>
       </div>
       </div>
@@ -38,16 +172,19 @@ export function OyunEkrani(props: OyunEkraniProps) {
       <div className="flex justify-between items-end">
       <div className="flex flex-col">
       <span className="text-on-surface-variant text-xs uppercase tracking-[0.2em] font-bold mb-1">Mevcut İlerleme</span>
-      <h1 className="text-4xl font-black font-headline tracking-tighter">Soru: 5/10</h1>
+      <h1 className="text-4xl font-black font-headline tracking-tighter">Soru: {currentQuestion}/{TOTAL_QUESTIONS}</h1>
       </div>
       <div className="flex flex-col items-end">
       <span className="text-primary text-xs uppercase tracking-[0.2em] font-bold mb-1">Kalan Süre</span>
-      <div className="text-2xl font-mono font-bold text-on-surface">00:12</div>
+      <div className="text-2xl font-mono font-bold text-on-surface">{formatTime(timeRemaining)}</div>
       </div>
       </div>
       {/*  Custom Progress Bar (Timer)  */}
       <div className="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
-      <div className="h-full bg-primary shadow-[0_0_15px_rgba(107,255,143,0.5)] w-[80%] rounded-full transition-all duration-1000 ease-linear"></div>
+      <div 
+        className="h-full bg-primary shadow-[0_0_15px_rgba(107,255,143,0.5)] rounded-full transition-all duration-1000 ease-linear"
+        style={{ width: `${timePercent}%` }}
+      ></div>
       </div>
       </div>
       {/*  Main Content Area: Bento-inspired Asymmetric Layout  */}
@@ -58,7 +195,10 @@ export function OyunEkrani(props: OyunEkraniProps) {
       <p className="text-on-surface-variant text-sm leading-relaxed font-medium">
                               Bu plakadaki sayıyı göremiyorsanız 'Atla' düğmesine basın veya tahminde bulunun.
                           </p>
-      <button className="w-full py-4 px-6 rounded-xl bg-surface-container-highest text-on-surface font-bold hover:bg-surface-bright transition-all active:scale-95 flex items-center justify-center gap-2">
+      <button 
+        className="w-full py-4 px-6 rounded-xl bg-surface-container-highest text-on-surface font-bold hover:bg-surface-bright transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+        onClick={handleSkip}
+      >
       <span>Atla</span>
       <span className="material-symbols-outlined text-sm" data-icon="fast_forward">fast_forward</span>
       </button>
@@ -71,12 +211,12 @@ export function OyunEkrani(props: OyunEkraniProps) {
       <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-700"></div>
       {/*  The Plate  */}
       <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-surface-container overflow-hidden ishihara-shadow bg-surface-container-lowest">
-      <img alt="Ishihara Test Plate" className="w-full h-full object-cover grayscale-[0.2] contrast-125" data-alt="Close-up of a circular Ishihara color blindness test plate featuring a mosaic of dense green and red dots forming a hidden number pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCu9mqR6QSN-1Ud-QFQcJMW2E-XQj9Yl3ao6WMvVAcxfyo_AuvDaEN1VDrl6WT57YkQhbdD2g9KQgQAcdt4IbScnjkI7gW4JX6rPsgqh0Bma-PDHjuV9IXmwdWfucQf85EVJxxtqLfPr94JQTYkAwT_T6YYInuN-98jWVEiCptq57Oolr7Q6zKpuep307XNSMv1q1SICPs-R5j8ZggI-gpxlDnsx0L8eEveGaK9b8x-PTpIIlkgRCjaPaw--Xiw65nfHy-LUJsE-hB"/ />
+      <IshiharaPlate data={plateData} />
       </div>
       {/*  Input Overlay for Focus  */}
       <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-panel px-8 py-3 rounded-2xl flex flex-col items-center shadow-2xl">
       <span className="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Giriş Yapın</span>
-      <div className="text-3xl font-black font-headline tracking-widest text-on-surface">--</div>
+      <div className="text-3xl font-black font-headline tracking-widest text-on-surface">{userAnswer || '--'}</div>
       </div>
       </div>
       </div>
@@ -85,26 +225,42 @@ export function OyunEkrani(props: OyunEkraniProps) {
       <div className="glass-panel p-4 md:p-6 rounded-[2.5rem] shadow-2xl">
       <div className="grid grid-cols-3 gap-3">
       {/*  Keypad Buttons  */}
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">1</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">2</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">3</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">4</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">5</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">6</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">7</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">8</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">9</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-tertiary/20 hover:text-tertiary transition-all active:scale-90 duration-150">
+      {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((num) => (
+        <button 
+          key={num}
+          className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150 cursor-pointer"
+          onClick={() => handleKeyPress(num)}
+        >
+        {num}
+        </button>
+      ))}
+      <button 
+        className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-tertiary/20 hover:text-tertiary transition-all active:scale-90 duration-150 cursor-pointer"
+        onClick={() => handleKeyPress('backspace')}
+        aria-label="Sil"
+      >
       <span className="material-symbols-outlined" data-icon="backspace">backspace</span>
       </button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150">0</button>
-      <button className="aspect-square flex items-center justify-center rounded-2xl bg-primary text-on-primary-container shadow-[0_0_20px_rgba(107,255,143,0.3)] transition-all active:scale-90 duration-150">
+      <button 
+        className="aspect-square flex items-center justify-center rounded-2xl bg-surface-container-high hover:bg-primary/20 hover:text-primary text-xl font-bold transition-all active:scale-90 duration-150 cursor-pointer"
+        onClick={() => handleKeyPress('0')}
+      >
+      0
+      </button>
+      <button 
+        className="aspect-square flex items-center justify-center rounded-2xl bg-primary text-on-primary-container shadow-[0_0_20px_rgba(107,255,143,0.3)] transition-all active:scale-90 duration-150 cursor-pointer"
+        onClick={handleSubmit}
+        aria-label="Gönder"
+      >
       <span className="material-symbols-outlined font-bold" data-icon="keyboard_return">keyboard_return</span>
       </button>
       </div>
       </div>
       {/*  Mobile Skip Button  */}
-      <button className="lg:hidden w-full py-4 px-6 rounded-2xl bg-surface-container-highest text-on-surface font-bold flex items-center justify-center gap-2">
+      <button 
+        className="lg:hidden w-full py-4 px-6 rounded-2xl bg-surface-container-highest text-on-surface font-bold flex items-center justify-center gap-2 cursor-pointer"
+        onClick={handleSkip}
+      >
       <span>Atla</span>
       <span className="material-symbols-outlined text-sm" data-icon="fast_forward">fast_forward</span>
       </button>
@@ -113,22 +269,22 @@ export function OyunEkrani(props: OyunEkraniProps) {
       </main>
       {/*  BottomNavBar (Mobile only)  */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#0e0e0e]/90 backdrop-blur-2xl rounded-t-3xl border-t border-white/5 z-50">
-      <a className="flex flex-col items-center justify-center text-[#6bff8f] bg-[#6bff8f]/10 rounded-2xl p-2 scale-110 active:scale-90 duration-150" href="#">
+      <div className="flex flex-col items-center justify-center text-[#6bff8f] bg-[#6bff8f]/10 rounded-2xl p-2 scale-110">
       <span className="material-symbols-outlined" data-icon="palette">palette</span>
       <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Test</span>
-      </a>
-      <a className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+      </div>
+      <div className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all cursor-pointer">
       <span className="material-symbols-outlined" data-icon="analytics">analytics</span>
-      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Stats</span>
-      </a>
-      <a className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">İstatistik</span>
+      </div>
+      <div className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all cursor-pointer">
       <span className="material-symbols-outlined" data-icon="school">school</span>
-      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Academy</span>
-      </a>
-      <a className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all active:scale-90 duration-150" href="#">
+      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Akademi</span>
+      </div>
+      <div className="flex flex-col items-center justify-center text-neutral-500 p-2 hover:text-white transition-all cursor-pointer">
       <span className="material-symbols-outlined" data-icon="tune">tune</span>
-      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
-      </a>
+      <span className="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Ayarlar</span>
+      </div>
       </nav>
       {/*  Decorative Screen Elements  */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
