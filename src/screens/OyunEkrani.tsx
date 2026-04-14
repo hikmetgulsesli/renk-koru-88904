@@ -7,7 +7,7 @@
 // 3. Add onClick/onChange handlers to interactive elements
 // 4. Replace placeholder data with props/state
 
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { IshiharaPlate } from "../components/IshiharaPlate";
 import { generateIshiharaColors } from "../utils/colorGeneration";
 import { generatePlatePoints } from "../utils/patternGeneration";
@@ -22,72 +22,68 @@ interface OyunEkraniProps {
 const TOTAL_QUESTIONS = 10;
 const TIME_PER_QUESTION = { easy: 30, medium: 20, hard: 15 };
 
+function generatePlate(difficulty: Difficulty): IshiharaPlateData {
+  const targetValue = String(Math.floor(Math.random() * 10));
+  const colors = generateIshiharaColors(difficulty);
+  const points = generatePlatePoints(150, difficulty, targetValue);
+  return {
+    backgroundColors: colors.background,
+    targetColor: colors.target,
+    points,
+    targetValue,
+    radius: 150,
+  };
+}
+
 export function OyunEkrani({ difficulty = 'easy', onGameOver }: OyunEkraniProps) {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [score, setScore] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [timeRemaining, setTimeRemaining] = useState(TIME_PER_QUESTION[difficulty]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [currentPlate, setCurrentPlate] = useState<IshiharaPlateData>(() => generatePlate(difficulty));
   const [answers, setAnswers] = useState<Answer[]>([]);
+  const questionStartTime = useRef(Date.now());
 
-  // Generate a random digit for each question (seeded by question number)
-  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 10));
-  const targetNumber = useMemo(() => {
-    return String(seed);
-  }, [seed]);
-
-  // Generate plate data for the current question
-  const plateData = useMemo<IshiharaPlateData>(() => {
-    const colors = generateIshiharaColors(difficulty);
-    const plateRadius = 150;
-    const points = generatePlatePoints(plateRadius, difficulty, targetNumber);
-    return {
-      backgroundColors: colors.background,
-      targetColor: colors.target,
-      points,
-      targetValue: targetNumber,
-      radius: plateRadius,
-    };
-  }, [difficulty, targetNumber, seed]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Use a ref for the submit handler to avoid circular deps with the timer
-  const submitRef = useRef<() => void>(() => {});
+  // Ref to avoid timer dependency on handleSubmit
+  const handleSubmitRef = useRef<() => void>(() => {});
 
   const handleSubmit = useCallback(() => {
-    const isCorrect = userAnswer === targetNumber;
-    const timeBonus = isCorrect ? calculateTimeBonus(timeRemaining) : 0;
-    const pointsEarned = isCorrect ? 100 + timeBonus : 0;
+    const timeSpent = TIME_PER_QUESTION[difficulty] - timeRemaining;
+    const isCorrect = userAnswer === currentPlate.targetValue;
+    const timeBonus = calculateTimeBonus(timeRemaining);
+    const earnedPoints = isCorrect ? 100 + timeBonus : 0;
 
     const newAnswer: Answer = {
       questionNumber: currentQuestion,
       userAnswer,
-      correctAnswer: targetNumber,
+      correctAnswer: currentPlate.targetValue,
       isCorrect,
-      timeSpent: timeRemaining,
+      timeSpent,
     };
 
-    const newAnswers = [...answers, newAnswer];
-    setAnswers(newAnswers);
-    if (pointsEarned > 0) {
-      setScore((prev) => prev + pointsEarned);
-    }
-
-    if (currentQuestion >= TOTAL_QUESTIONS) {
-      setIsGameOver(true);
-      const finalScore = calculateScore(newAnswers);
-      if (onGameOver) {
-        onGameOver(finalScore);
+    setAnswers((prev) => [...prev, newAnswer]);
+    setScore((prev) => prev + earnedPoints);
+    setTimeout(() => {
+      if (currentQuestion >= TOTAL_QUESTIONS) {
+        setIsGameOver(true);
+        if (onGameOver) {
+          onGameOver(calculateScore([...answers, newAnswer]));
+        }
+      } else {
+        setCurrentQuestion((prev) => prev + 1);
+        setUserAnswer('');
+        setTimeRemaining(TIME_PER_QUESTION[difficulty]);
+        setCurrentPlate(generatePlate(difficulty));
+        questionStartTime.current = Date.now();
       }
-    } else {
-      setCurrentQuestion((prev) => prev + 1);
-      setUserAnswer('');
-      setTimeRemaining(TIME_PER_QUESTION[difficulty]);
-      setSeed(Math.floor(Math.random() * 10));
-    }
-  }, [userAnswer, currentQuestion, timeRemaining, answers, targetNumber, onGameOver, difficulty]);
+    }, 600);
+  }, [userAnswer, currentQuestion, timeRemaining, onGameOver, difficulty, currentPlate, answers]);
 
-  // Keep ref in sync
-  submitRef.current = handleSubmit;
+  // Keep ref in sync with latest handleSubmit
+  useEffect(() => {
+    handleSubmitRef.current = handleSubmit;
+  }, [handleSubmit]);
 
   useEffect(() => {
     if (isGameOver) return;
@@ -95,7 +91,7 @@ export function OyunEkrani({ difficulty = 'easy', onGameOver }: OyunEkraniProps)
     const timer = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
-          submitRef.current();
+          handleSubmitRef.current();
           return TIME_PER_QUESTION[difficulty];
         }
         return prev - 1;
@@ -116,25 +112,24 @@ export function OyunEkrani({ difficulty = 'easy', onGameOver }: OyunEkraniProps)
   };
 
   const handleSkip = () => {
+    const timeSpent = TIME_PER_QUESTION[difficulty] - timeRemaining;
     const newAnswer: Answer = {
       questionNumber: currentQuestion,
       userAnswer: '',
-      correctAnswer: targetNumber,
+      correctAnswer: currentPlate.targetValue,
       isCorrect: false,
-      timeSpent: timeRemaining,
+      timeSpent,
     };
-
-    const newAnswers = [...answers, newAnswer];
-    setAnswers(newAnswers);
-
+    setAnswers((prev) => [...prev, newAnswer]);
     if (currentQuestion >= TOTAL_QUESTIONS) {
       setIsGameOver(true);
-      const finalScore = calculateScore(newAnswers);
-      if (onGameOver) onGameOver(finalScore);
+      if (onGameOver) onGameOver(score);
     } else {
       setCurrentQuestion((prev) => prev + 1);
       setUserAnswer('');
       setTimeRemaining(TIME_PER_QUESTION[difficulty]);
+      setCurrentPlate(generatePlate(difficulty));
+      questionStartTime.current = Date.now();
     }
   };
 
@@ -211,7 +206,7 @@ export function OyunEkrani({ difficulty = 'easy', onGameOver }: OyunEkraniProps)
       <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-700"></div>
       {/*  The Plate  */}
       <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-surface-container overflow-hidden ishihara-shadow bg-surface-container-lowest">
-      <IshiharaPlate data={plateData} />
+      <IshiharaPlate data={currentPlate} />
       </div>
       {/*  Input Overlay for Focus  */}
       <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-panel px-8 py-3 rounded-2xl flex flex-col items-center shadow-2xl">
