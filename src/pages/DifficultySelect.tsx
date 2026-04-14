@@ -1,18 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Difficulty } from '../types/game';
 import { ZorlukSecimi } from '../screens/ZorlukSecimi';
-
-function getStoredHighScore(): number {
-  try {
-    return Number(localStorage.getItem('renk-koru-high-score')) || 0;
-  } catch {
-    return 0;
-  }
-}
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export function DifficultySelect(): JSX.Element {
   const navigate = useNavigate();
-  const highScore = getStoredHighScore();
+  const [highScore] = useLocalStorage<number>('renk-koru-high-score', 0);
 
   const handleSelectDifficulty = (difficulty: Difficulty) => {
     navigate(`/game?difficulty=${difficulty}`);
