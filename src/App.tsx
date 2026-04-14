@@ -1,36 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { MainMenu } from './pages/MainMenu';
-import { DifficultySelect } from './pages/DifficultySelect';
-import { Ayarlar } from './screens/Ayarlar';
-import { BilgiEkrani } from './screens/BilgiEkrani';
-import { OyunEkrani } from './screens/OyunEkrani';
-import { SonucEkrani } from './screens/SonucEkrani';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MainMenu } from "./pages/MainMenu";
+import { DifficultySelect } from "./pages/DifficultySelect";
 
-function SettingsPage() {
-  const navigate = useNavigate();
-  return <Ayarlar onBack={() => navigate('/')} />;
-}
-
-function AboutPage() {
-  const navigate = useNavigate();
-  return <BilgiEkrani onBack={() => navigate('/')} />;
-}
-
-function GamePage() {
-  const navigate = useNavigate();
-  return <OyunEkrani difficulty="easy" onGameOver={() => navigate('/result')} />;
-}
-
-function ResultPage() {
-  const navigate = useNavigate();
+function PlaceholderPage({ title }: { title: string }) {
   return (
-    <SonucEkrani
-      score={0}
-      highScore={0}
-      onRestart={() => navigate('/difficulty')}
-      onBackToMenu={() => navigate('/')}
-    />
+    <div className="min-h-screen bg-background text-on-background flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-4xl font-headline font-bold text-primary mb-4">{title}</h1>
+        <p className="text-on-surface-variant">Bu sayfa yakında aktif olacak.</p>
+      </div>
+    </div>
   );
 }
 
@@ -40,10 +19,13 @@ function App() {
       <Routes>
         <Route path="/" element={<MainMenu />} />
         <Route path="/difficulty" element={<DifficultySelect />} />
-        <Route path="/game" element={<GamePage />} />
-        <Route path="/result" element={<ResultPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/game" element={<PlaceholderPage title="Oyun Ekranı" />} />
+        <Route path="/result" element={<PlaceholderPage title="Sonuç Ekranı" />} />
+        <Route path="/settings" element={<PlaceholderPage title="Ayarlar" />} />
+        <Route path="/about" element={<PlaceholderPage title="Bilgi Ekranı" />} />
+        <Route path="/stats" element={<PlaceholderPage title="İstatistikler" />} />
+        <Route path="/academy" element={<PlaceholderPage title="Akademi" />} />
+        <Route path="*" element={<MainMenu />} />
       </Routes>
     </BrowserRouter>
   );

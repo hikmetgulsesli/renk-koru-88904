@@ -9,9 +9,18 @@ function getStoredHighScore(): number {
   }
 }
 
+function getStoredCurrentScore(): number {
+  try {
+    return Number(localStorage.getItem('renk-koru-current-score')) || 0;
+  } catch {
+    return 0;
+  }
+}
+
 export function MainMenu(): JSX.Element {
   const navigate = useNavigate();
   const highScore = getStoredHighScore();
+  const currentScore = getStoredCurrentScore();
 
   return (
     <AnaMenu
@@ -19,7 +28,7 @@ export function MainMenu(): JSX.Element {
       onAyarlar={() => navigate('/settings')}
       onBilgi={() => navigate('/about')}
       highScore={highScore}
-      currentScore={0}
+      currentScore={currentScore}
     />
   );
 }
